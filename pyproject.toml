@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "try-api-project"
+version = "0.1.0"
+description = ""
+authors = ["Балахонцева Анастасия <ayamileto@gmail.com>"]
+readme = "README.md"
+packages = [{include = "try_api_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
