@@ -1,6 +1,7 @@
 import json
+import os
 import requests
-from main import API_KEY
+from main import API_KEY, CURRENCY_RATES_FILE
 
 
 def get_currency_rate(currency: str) -> float:
@@ -12,5 +13,14 @@ def get_currency_rate(currency: str) -> float:
     return rate
 
 
-
-
+def save_to_json(data: dict) -> None:
+    """Сохраняет данные в JSON-файл"""
+    with open(CURRENCY_RATES_FILE, "a") as f:
+        if os.stat(CURRENCY_RATES_FILE).st_size == 0:
+            json.dump([data], f)
+        else:
+            with open(CURRENCY_RATES_FILE) as json_file:
+                data_list = json.load(json_file)
+            data_list.append(data)
+            with open(CURRENCY_RATES_FILE, "w") as json_file:
+                json.dump(data_list, json_file)
