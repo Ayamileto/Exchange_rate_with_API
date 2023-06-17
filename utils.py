@@ -1,7 +1,9 @@
 import json
 import os
 import requests
-from main import API_KEY, CURRENCY_RATES_FILE
+
+CURRENCY_RATES_FILE = "currency_rates.json"
+API_KEY = os.getenv('EXCHANGE_RATE_KEY')
 
 
 def get_currency_rate(currency: str) -> float:
